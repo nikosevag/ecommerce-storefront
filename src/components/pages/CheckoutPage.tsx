@@ -68,10 +68,10 @@ function CheckoutPage() {
   // Redirect if cart is empty
   if (items.length === 0 && !orderComplete) {
     return (
-      <div className="text-center py-12">
+      <div className="text-center py-12 px-4">
         <div className="mb-6">
           <svg
-            className="mx-auto h-24 w-24 text-gray-400"
+            className="mx-auto h-16 w-16 sm:h-24 sm:w-24 text-gray-400"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24">
@@ -83,13 +83,13 @@ function CheckoutPage() {
             />
           </svg>
         </div>
-        <h2 className="text-2xl font-semibold text-gray-900 mb-2">
+        <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2">
           Your cart is empty
         </h2>
         <p className="text-gray-600 mb-6">Add some products to checkout</p>
         <Link
           to="/"
-          className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium">
+          className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium">
           Continue Shopping
         </Link>
       </div>
@@ -141,11 +141,11 @@ function CheckoutPage() {
   // Order Complete View
   if (orderComplete) {
     return (
-      <div className="max-w-2xl mx-auto text-center py-12">
+      <div className="max-w-2xl mx-auto text-center py-12 px-4">
         <div className="mb-6">
-          <CheckCircle className="mx-auto h-24 w-24 text-green-500" />
+          <CheckCircle className="mx-auto h-16 w-16 sm:h-24 sm:w-24 text-green-500" />
         </div>
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
           Order Confirmed!
         </h1>
         <p className="text-lg text-gray-600 mb-2">
@@ -153,7 +153,7 @@ function CheckoutPage() {
         </p>
         <p className="text-sm text-gray-500 mb-8">Order #{orderId}</p>
 
-        <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-8">
+        <div className="bg-green-50 border border-green-200 rounded-lg p-4 sm:p-6 mb-8">
           <h3 className="font-semibold text-green-800 mb-2">What's next?</h3>
           <p className="text-green-700 text-sm">
             We'll send you a confirmation email with tracking information once
@@ -161,7 +161,7 @@ function CheckoutPage() {
           </p>
         </div>
 
-        <div className="flex gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             to="/"
             className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium">
@@ -178,37 +178,41 @@ function CheckoutPage() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6">
       {/* Header */}
-      <div className="mb-8">
+      <div className="mb-6 sm:mb-8">
         <Link
           to="/cart"
           className="inline-flex items-center text-blue-600 hover:text-blue-700 mb-4">
           <ArrowLeft className="h-4 w-4 mr-1" />
           Back to Cart
         </Link>
-        <h1 className="text-3xl font-bold text-gray-900">Checkout</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
+          Checkout
+        </h1>
       </div>
 
       {/* Progress Steps */}
-      <div className="mb-8">
+      <div className="mb-6 sm:mb-8">
         <div className="flex items-center">
           <div
             className={`flex items-center ${
               currentStep >= 1 ? 'text-blue-600' : 'text-gray-400'
             }`}>
             <div
-              className={`flex items-center justify-center w-8 h-8 rounded-full border-2 ${
+              className={`flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 ${
                 currentStep >= 1
                   ? 'border-blue-600 bg-blue-600 text-white'
                   : 'border-gray-300'
               }`}>
-              1
+              <span className="text-xs sm:text-sm">1</span>
             </div>
-            <span className="ml-2 font-medium">Shipping</span>
+            <span className="ml-2 font-medium text-sm sm:text-base">
+              Shipping
+            </span>
           </div>
           <div
-            className={`flex-1 h-0.5 mx-4 ${
+            className={`flex-1 h-0.5 mx-2 sm:mx-4 ${
               currentStep >= 2 ? 'bg-blue-600' : 'bg-gray-300'
             }`}></div>
           <div
@@ -216,25 +220,27 @@ function CheckoutPage() {
               currentStep >= 2 ? 'text-blue-600' : 'text-gray-400'
             }`}>
             <div
-              className={`flex items-center justify-center w-8 h-8 rounded-full border-2 ${
+              className={`flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 ${
                 currentStep >= 2
                   ? 'border-blue-600 bg-blue-600 text-white'
                   : 'border-gray-300'
               }`}>
-              2
+              <span className="text-xs sm:text-sm">2</span>
             </div>
-            <span className="ml-2 font-medium">Payment</span>
+            <span className="ml-2 font-medium text-sm sm:text-base">
+              Payment
+            </span>
           </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
         {/* Main Content */}
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-2 order-2 lg:order-1">
           {/* Step 1: Shipping Information */}
           {currentStep === 1 && (
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-              <h2 className="text-xl font-semibold text-gray-900 mb-6 flex items-center">
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-6">
+              <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4 sm:mb-6 flex items-center">
                 <Truck className="h-5 w-5 mr-2" />
                 Shipping Information
               </h2>
@@ -257,7 +263,7 @@ function CheckoutPage() {
                           firstName: e.target.value,
                         })
                       }
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base"
                     />
                   </div>
                   <div>
@@ -274,7 +280,7 @@ function CheckoutPage() {
                           lastName: e.target.value,
                         })
                       }
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base"
                     />
                   </div>
                 </div>
@@ -293,7 +299,7 @@ function CheckoutPage() {
                         email: e.target.value,
                       })
                     }
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base"
                   />
                 </div>
 
@@ -310,7 +316,7 @@ function CheckoutPage() {
                         phone: e.target.value,
                       })
                     }
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base"
                   />
                 </div>
 
@@ -328,7 +334,7 @@ function CheckoutPage() {
                         address: e.target.value,
                       })
                     }
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base"
                   />
                 </div>
 
@@ -347,7 +353,7 @@ function CheckoutPage() {
                           city: e.target.value,
                         })
                       }
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base"
                     />
                   </div>
                   <div>
@@ -364,7 +370,7 @@ function CheckoutPage() {
                           zipCode: e.target.value,
                         })
                       }
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base"
                     />
                   </div>
                 </div>
@@ -382,7 +388,7 @@ function CheckoutPage() {
                         country: e.target.value,
                       })
                     }
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base">
                     <option value="Greece">Greece</option>
                     <option value="Cyprus">Cyprus</option>
                   </select>
@@ -399,9 +405,9 @@ function CheckoutPage() {
 
           {/* Step 2: Payment Information */}
           {currentStep === 2 && (
-            <div className="space-y-6">
-              <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-                <h2 className="text-xl font-semibold text-gray-900 mb-6 flex items-center">
+            <div className="space-y-4 sm:space-y-6">
+              <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-6">
+                <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4 sm:mb-6 flex items-center">
                   <CreditCard className="h-5 w-5 mr-2" />
                   Payment Information
                 </h2>
@@ -425,11 +431,11 @@ function CheckoutPage() {
                           cardNumber: formatCardNumber(e.target.value),
                         })
                       }
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base"
                     />
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 gap-3 sm:gap-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">
                         Expiry Date *
@@ -446,7 +452,7 @@ function CheckoutPage() {
                             expiryDate: formatExpiryDate(e.target.value),
                           })
                         }
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base"
                       />
                     </div>
                     <div>
@@ -465,7 +471,7 @@ function CheckoutPage() {
                             cvv: e.target.value.replace(/\D/g, ''),
                           })
                         }
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base"
                       />
                     </div>
                   </div>
@@ -484,36 +490,36 @@ function CheckoutPage() {
                           nameOnCard: e.target.value,
                         })
                       }
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base"
                     />
                   </div>
 
-                  <div className="flex items-center">
+                  <div className="flex items-start">
                     <input
                       type="checkbox"
                       id="billing-same"
                       checked={billingAddressSame}
                       onChange={(e) => setBillingAddressSame(e.target.checked)}
-                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mt-0.5"
                     />
                     <label
                       htmlFor="billing-same"
-                      className="ml-2 text-sm text-gray-700">
+                      className="ml-3 text-sm text-gray-700 leading-5">
                       Billing address same as shipping address
                     </label>
                   </div>
 
-                  <div className="flex gap-4 pt-4">
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4">
                     <button
                       type="button"
                       onClick={() => setCurrentStep(1)}
-                      className="flex-1 bg-gray-200 text-gray-800 py-3 px-4 rounded-lg hover:bg-gray-300 transition-colors duration-200 font-medium">
+                      className="w-full sm:flex-1 bg-gray-200 text-gray-800 py-3 px-4 rounded-lg hover:bg-gray-300 transition-colors duration-200 font-medium order-2 sm:order-1">
                       Back to Shipping
                     </button>
                     <button
                       type="submit"
                       disabled={isProcessing}
-                      className="flex-1 bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed">
+                      className="w-full sm:flex-1 bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed order-1 sm:order-2">
                       {isProcessing
                         ? 'Processing...'
                         : `Complete Order - $${total.toFixed(2)}`}
@@ -523,14 +529,14 @@ function CheckoutPage() {
               </div>
 
               {/* Security Notice */}
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                <div className="flex items-center">
-                  <Shield className="h-5 w-5 text-green-600 mr-2" />
+              <div className="bg-green-50 border border-green-200 rounded-lg p-3 sm:p-4">
+                <div className="flex items-start sm:items-center">
+                  <Shield className="h-5 w-5 text-green-600 mr-2 mt-0.5 sm:mt-0 shrink-0" />
                   <div>
                     <p className="text-sm font-medium text-green-800">
                       Your payment is secure
                     </p>
-                    <p className="text-xs text-green-700">
+                    <p className="text-xs text-green-700 mt-1">
                       All transactions are encrypted and processed securely
                     </p>
                   </div>
@@ -541,9 +547,9 @@ function CheckoutPage() {
         </div>
 
         {/* Order Summary Sidebar */}
-        <div className="lg:col-span-1">
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 sticky top-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">
+        <div className="lg:col-span-1 order-1 lg:order-2">
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-6 lg:sticky lg:top-6">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-4">
               Order Summary
             </h3>
 
@@ -555,17 +561,17 @@ function CheckoutPage() {
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="w-12 h-12 object-contain bg-gray-50 rounded"
+                    className="w-10 h-10 sm:w-12 sm:h-12 object-contain bg-gray-50 rounded shrink-0"
                   />
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-gray-900 truncate">
+                    <p className="text-xs sm:text-sm font-medium text-gray-900 truncate">
                       {item.title}
                     </p>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-xs sm:text-sm text-gray-500">
                       Qty: {item.quantity}
                     </p>
                   </div>
-                  <p className="text-sm font-medium text-gray-900">
+                  <p className="text-xs sm:text-sm font-medium text-gray-900 shrink-0">
                     ${(item.price * item.quantity).toFixed(2)}
                   </p>
                 </div>
@@ -573,22 +579,22 @@ function CheckoutPage() {
             </div>
 
             <div className="border-t pt-4 space-y-2">
-              <div className="flex justify-between text-sm text-gray-600">
+              <div className="flex justify-between text-xs sm:text-sm text-gray-600">
                 <span>Subtotal</span>
                 <span>${subtotal.toFixed(2)}</span>
               </div>
-              <div className="flex justify-between text-sm text-gray-600">
+              <div className="flex justify-between text-xs sm:text-sm text-gray-600">
                 <span>Shipping</span>
                 <span>
                   {shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`}
                 </span>
               </div>
-              <div className="flex justify-between text-sm text-gray-600">
+              <div className="flex justify-between text-xs sm:text-sm text-gray-600">
                 <span>Tax</span>
                 <span>${tax.toFixed(2)}</span>
               </div>
               <div className="border-t pt-2">
-                <div className="flex justify-between text-lg font-semibold text-gray-900">
+                <div className="flex justify-between text-base sm:text-lg font-semibold text-gray-900">
                   <span>Total</span>
                   <span>${total.toFixed(2)}</span>
                 </div>
