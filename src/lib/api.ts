@@ -28,7 +28,7 @@ export const fetchProductById = async (id: number): Promise<Product> => {
 };
 
 export const fetchProductsByCategory = async (
-  category: string
+  category: string,
 ): Promise<Product[]> => {
   try {
     const response = await api.get<Product[]>(`/products/category/${category}`);

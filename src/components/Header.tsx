@@ -10,32 +10,33 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="flex items-center justify-between h-16">
+      <header className="sticky top-0 z-40 border-b border-gray-200 bg-white shadow-sm">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex h-16 items-center justify-between">
             {/* Left Section */}
             <div className="flex items-center">
               {/* Mobile burger menu - only visible on mobile */}
               <button
                 onClick={() => setIsMobileMenuOpen(true)}
-                className="md:hidden p-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200"
-                aria-label="Open menu">
-                <Menu className="w-6 h-6" />
+                className="rounded-lg p-2 text-gray-700 transition-all duration-200 hover:bg-blue-50 hover:text-blue-600 md:hidden"
+                aria-label="Open menu"
+              >
+                <Menu className="h-6 w-6" />
               </button>
 
               {/* Desktop Logo - only visible on desktop */}
-              <div className="hidden md:block shrink-0">
+              <div className="hidden shrink-0 md:block">
                 <Logo />
               </div>
             </div>
 
             {/* Mobile Logo - centered on mobile only */}
-            <div className="md:hidden absolute left-1/2 transform -translate-x-1/2">
+            <div className="absolute left-1/2 -translate-x-1/2 transform md:hidden">
               <Logo />
             </div>
 
             {/* Desktop Navigation - centered on desktop, hidden on mobile */}
-            <div className="hidden md:flex flex-1 justify-center">
+            <div className="hidden flex-1 justify-center md:flex">
               <Navigation />
             </div>
 

@@ -35,19 +35,19 @@ export function CartItemRow({
   const itemTotal = item.price * item.quantity;
 
   return (
-    <div className="flex items-center gap-4 py-4 border-b border-gray-200">
+    <div className="flex items-center gap-4 border-b border-gray-200 py-4">
       {/* Product Image */}
-      <div className="shrink-0 w-16 h-16 bg-gray-100 rounded-md overflow-hidden">
+      <div className="h-16 w-16 shrink-0 overflow-hidden rounded-md bg-gray-100">
         <img
           src={item.image}
           alt={item.title}
-          className="w-full h-full object-contain p-1"
+          className="h-full w-full object-contain p-1"
         />
       </div>
 
       {/* Product Info */}
-      <div className="flex-1 min-w-0">
-        <h3 className="text-sm font-medium text-gray-900 truncate">
+      <div className="min-w-0 flex-1">
+        <h3 className="truncate text-sm font-medium text-gray-900">
           {item.title}
         </h3>
         <p className="text-sm text-gray-500">${item.price.toFixed(2)} each</p>
@@ -57,39 +57,43 @@ export function CartItemRow({
       <div className="flex items-center gap-2">
         <button
           onClick={decrementQuantity}
-          className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 disabled:opacity-50"
-          disabled={item.quantity <= 1}>
+          className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 hover:bg-gray-100 disabled:opacity-50"
+          disabled={item.quantity <= 1}
+        >
           −
         </button>
         <input
           type="number"
           value={item.quantity}
           onChange={handleQuantityChange}
-          className="w-16 text-center border border-gray-300 rounded-md py-1"
+          className="w-16 rounded-md border border-gray-300 py-1 text-center"
           min="1"
         />
         <button
           onClick={incrementQuantity}
-          className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100">
+          className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 hover:bg-gray-100"
+        >
           +
         </button>
       </div>
 
       {/* Item Total */}
-      <div className="text-sm font-medium text-gray-900 w-20 text-right">
+      <div className="w-20 text-right text-sm font-medium text-gray-900">
         ${itemTotal.toFixed(2)}
       </div>
 
       {/* Remove Button */}
       <button
         onClick={handleRemove}
-        className="text-red-600 hover:text-red-800 p-1"
-        title="Remove item">
+        className="p-1 text-red-600 hover:text-red-800"
+        title="Remove item"
+      >
         <svg
-          className="w-5 h-5"
+          className="h-5 w-5"
           fill="none"
           stroke="currentColor"
-          viewBox="0 0 24 24">
+          viewBox="0 0 24 24"
+        >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"

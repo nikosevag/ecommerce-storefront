@@ -5,7 +5,7 @@ import type { Product } from '../types/product';
 export function useCartAnimation() {
   const [isAdding, setIsAdding] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
-  const addItem = useCartStore((state) => state.addItem);
+  const addItem = useCartStore(state => state.addItem);
 
   const addItemWithAnimation = async (product: Product) => {
     setIsAdding(true);

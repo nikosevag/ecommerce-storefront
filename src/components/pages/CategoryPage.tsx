@@ -22,7 +22,7 @@ export default function CategoryPage() {
         setProducts(categoryProducts);
       } catch (err) {
         setError(
-          err instanceof Error ? err.message : 'Failed to load products'
+          err instanceof Error ? err.message : 'Failed to load products',
         );
       } finally {
         setLoading(false);
@@ -39,8 +39,8 @@ export default function CategoryPage() {
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[50vh] gap-4">
-        <LoaderCircle className="w-8 h-8 animate-spin text-blue-600" />
+      <div className="flex min-h-[50vh] flex-col items-center justify-center gap-4">
+        <LoaderCircle className="h-8 w-8 animate-spin text-blue-600" />
         <p className="text-gray-600">
           Loading {displayCategoryName} products...
         </p>
@@ -50,10 +50,10 @@ export default function CategoryPage() {
 
   if (error) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[50vh] gap-4">
-        <AlertCircle className="w-12 h-12 text-red-500" />
+      <div className="flex min-h-[50vh] flex-col items-center justify-center gap-4">
+        <AlertCircle className="h-12 w-12 text-red-500" />
         <div className="text-center">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">
+          <h2 className="mb-2 text-xl font-semibold text-gray-900">
             Error Loading Products
           </h2>
           <p className="text-gray-600">{error}</p>
@@ -66,7 +66,7 @@ export default function CategoryPage() {
     <div className="container mx-auto px-6 py-8">
       {/* Category Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">
+        <h1 className="mb-2 text-3xl font-bold text-gray-900">
           {displayCategoryName}
         </h1>
         <p className="text-gray-600">
@@ -76,18 +76,15 @@ export default function CategoryPage() {
 
       {/* Products Grid */}
       {products.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {products.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-            />
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {products.map(product => (
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       ) : (
-        <div className="flex flex-col items-center justify-center min-h-[30vh] gap-4">
+        <div className="flex min-h-[30vh] flex-col items-center justify-center gap-4">
           <div className="text-center">
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">
+            <h2 className="mb-2 text-xl font-semibold text-gray-900">
               No products found
             </h2>
             <p className="text-gray-600">

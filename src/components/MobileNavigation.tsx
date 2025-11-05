@@ -61,12 +61,8 @@ export function MobileNavigation({ onLinkClick }: MobileNavigationProps) {
   return (
     <nav className="flex flex-col">
       {/* Home */}
-      <NavLink
-        to="/"
-        end
-        className={navLinkClass}
-        onClick={handleLinkClick}>
-        <Home className="w-5 h-5" />
+      <NavLink to="/" end className={navLinkClass} onClick={handleLinkClick}>
+        <Home className="h-5 w-5" />
         <span>Home</span>
       </NavLink>
 
@@ -74,20 +70,21 @@ export function MobileNavigation({ onLinkClick }: MobileNavigationProps) {
       <div className="border-b border-gray-100">
         <button
           onClick={() => setIsCategoriesExpanded(!isCategoriesExpanded)}
-          className={`w-full flex items-center justify-between gap-3 px-4 py-3 text-base font-medium transition-all duration-200 ${
+          className={`flex w-full items-center justify-between gap-3 px-4 py-3 text-base font-medium transition-all duration-200 ${
             isOnCategoryPage
-              ? 'bg-blue-50 text-blue-600 border-l-4 border-l-blue-600'
+              ? 'border-l-4 border-l-blue-600 bg-blue-50 text-blue-600'
               : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600'
           }`}
-          type="button">
+          type="button"
+        >
           <div className="flex items-center gap-3">
-            <Tag className="w-5 h-5" />
+            <Tag className="h-5 w-5" />
             <span>Categories</span>
-            {loading && <LoaderCircle className="w-4 h-4 animate-spin" />}
+            {loading && <LoaderCircle className="h-4 w-4 animate-spin" />}
           </div>
           {!loading && (
             <ChevronRight
-              className={`w-4 h-4 transition-transform duration-200 ${
+              className={`h-4 w-4 transition-transform duration-200 ${
                 isCategoriesExpanded ? 'rotate-90' : ''
               }`}
             />
@@ -97,13 +94,14 @@ export function MobileNavigation({ onLinkClick }: MobileNavigationProps) {
         {/* Categories List */}
         {isCategoriesExpanded && !loading && (
           <div className="bg-gray-25">
-            {categories.map((category) => (
+            {categories.map(category => (
               <NavLink
                 key={category}
                 to={`/category/${encodeURIComponent(category)}`}
                 className={categoryLinkClass}
-                onClick={handleLinkClick}>
-                <div className="w-2 h-2 rounded-full bg-gray-300"></div>
+                onClick={handleLinkClick}
+              >
+                <div className="h-2 w-2 rounded-full bg-gray-300"></div>
                 <span>{formatCategoryName(category)}</span>
               </NavLink>
             ))}
@@ -112,11 +110,8 @@ export function MobileNavigation({ onLinkClick }: MobileNavigationProps) {
       </div>
 
       {/* About */}
-      <NavLink
-        to="/about"
-        className={navLinkClass}
-        onClick={handleLinkClick}>
-        <Info className="w-5 h-5" />
+      <NavLink to="/about" className={navLinkClass} onClick={handleLinkClick}>
+        <Info className="h-5 w-5" />
         <span>About</span>
       </NavLink>
     </nav>

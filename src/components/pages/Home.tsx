@@ -28,19 +28,20 @@ function Home() {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center min-h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+      <div className="flex min-h-64 items-center justify-center">
+        <div className="h-12 w-12 animate-spin rounded-full border-b-2 border-blue-600"></div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="text-center py-12">
-        <div className="text-red-600 mb-4">{error}</div>
+      <div className="py-12 text-center">
+        <div className="mb-4 text-red-600">{error}</div>
         <button
           onClick={() => window.location.reload()}
-          className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+          className="rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+        >
           Try Again
         </button>
       </div>
@@ -49,8 +50,8 @@ function Home() {
 
   return (
     <div>
-      <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">
+      <div className="mb-8 text-center">
+        <h1 className="mb-2 text-3xl font-bold text-gray-900">
           Welcome to Our Store
         </h1>
         <p className="text-gray-600">
@@ -58,17 +59,14 @@ function Home() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {products.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-          />
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {products.map(product => (
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
 
       {products.length === 0 && !isLoading && (
-        <div className="text-center py-12">
+        <div className="py-12 text-center">
           <p className="text-gray-500">No products found.</p>
         </div>
       )}

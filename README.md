@@ -28,14 +28,12 @@ A modern, beautiful e-commerce storefront built with React, TypeScript, Vite, an
 The application uses a clear separation of concerns for state management:
 
 1. **Local State (useState)**: Used for UI state and data fetching
-
    - Product lists on the homepage and category pages
    - Individual product details and loading states
    - Form inputs and validation states
    - Loading and error states for API calls
 
 2. **Global State (Zustand)**: Used for cart management and persistence
-
    - Cart items with quantities and pricing
    - Cart operations (add, remove, update quantities)
    - Persistent storage with localStorage middleware

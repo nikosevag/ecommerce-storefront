@@ -76,45 +76,41 @@ export function Navigation() {
 
   return (
     <nav className="flex items-center gap-1">
-      <NavLink
-        to="/"
-        end
-        className={navLinkClass}>
-        <Home className="w-4 h-4" />
+      <NavLink to="/" end className={navLinkClass}>
+        <Home className="h-4 w-4" />
         <span className="hidden sm:block">Home</span>
       </NavLink>
 
       {/* Categories Dropdown */}
-      <div
-        className="relative"
-        ref={dropdownRef}>
+      <div className="relative" ref={dropdownRef}>
         {loading ? (
           <div className="flex items-center gap-2 px-3 py-2 text-gray-500">
-            <LoaderCircle className="w-4 h-4 animate-spin" />
-            <span className="hidden sm:block text-sm">Loading...</span>
+            <LoaderCircle className="h-4 w-4 animate-spin" />
+            <span className="hidden text-sm sm:block">Loading...</span>
           </div>
         ) : (
           <>
             <button
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               className={dropdownButtonClass}
-              type="button">
-              <Tag className="w-4 h-4" />
+              type="button"
+            >
+              <Tag className="h-4 w-4" />
               <span className="hidden sm:block">
                 {isOnCategoryPage
                   ? formatCategoryName(currentCategory)
                   : 'Categories'}
               </span>
               <ChevronDown
-                className={`w-4 h-4 transition-transform duration-200 ${
+                className={`h-4 w-4 transition-transform duration-200 ${
                   isDropdownOpen ? 'rotate-180' : ''
                 }`}
               />
             </button>
 
             {isDropdownOpen && (
-              <div className="absolute top-full left-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg py-1 min-w-[200px] z-50">
-                {categories.map((category) => (
+              <div className="absolute top-full left-0 z-50 mt-1 min-w-[200px] rounded-lg border border-gray-200 bg-white py-1 shadow-lg">
+                {categories.map(category => (
                   <NavLink
                     key={category}
                     to={`/category/${encodeURIComponent(category)}`}
@@ -124,7 +120,8 @@ export function Navigation() {
                           ? 'bg-blue-600 text-white'
                           : 'text-gray-700 hover:bg-blue-50 hover:text-blue-600'
                       }`
-                    }>
+                    }
+                  >
                     {formatCategoryName(category)}
                   </NavLink>
                 ))}
@@ -134,10 +131,8 @@ export function Navigation() {
         )}
       </div>
 
-      <NavLink
-        to="/about"
-        className={navLinkClass}>
-        <Info className="w-4 h-4" />
+      <NavLink to="/about" className={navLinkClass}>
+        <Info className="h-4 w-4" />
         <span className="hidden sm:block">About</span>
       </NavLink>
     </nav>

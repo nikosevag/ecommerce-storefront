@@ -18,17 +18,15 @@ export const useCartStore = create<CartState>()(
       items: [],
 
       addItem: (product: Product) => {
-        set((state) => {
-          const existingItem = state.items.find(
-            (item) => item.id === product.id
-          );
+        set(state => {
+          const existingItem = state.items.find(item => item.id === product.id);
 
           if (existingItem) {
             return {
-              items: state.items.map((item) =>
+              items: state.items.map(item =>
                 item.id === product.id
                   ? { ...item, quantity: item.quantity + 1 }
-                  : item
+                  : item,
               ),
             };
           } else {
@@ -40,8 +38,8 @@ export const useCartStore = create<CartState>()(
       },
 
       removeItem: (productId: number) => {
-        set((state) => ({
-          items: state.items.filter((item) => item.id !== productId),
+        set(state => ({
+          items: state.items.filter(item => item.id !== productId),
         }));
       },
 
@@ -51,9 +49,9 @@ export const useCartStore = create<CartState>()(
           return;
         }
 
-        set((state) => ({
-          items: state.items.map((item) =>
-            item.id === productId ? { ...item, quantity } : item
+        set(state => ({
+          items: state.items.map(item =>
+            item.id === productId ? { ...item, quantity } : item,
           ),
         }));
       },
@@ -69,23 +67,23 @@ export const useCartStore = create<CartState>()(
       getTotalPrice: () => {
         return get().items.reduce(
           (total, item) => total + item.price * item.quantity,
-          0
+          0,
         );
       },
     }),
     {
       name: 'cart-storage',
-    }
-  )
+    },
+  ),
 );
 
 // Selector hooks for efficient re-rendering
 export const useCartTotalItems = () =>
-  useCartStore((state) =>
-    state.items.reduce((total, item) => total + item.quantity, 0)
+  useCartStore(state =>
+    state.items.reduce((total, item) => total + item.quantity, 0),
   );
 
 export const useCartTotalPrice = () =>
-  useCartStore((state) =>
-    state.items.reduce((total, item) => total + item.price * item.quantity, 0)
+  useCartStore(state =>
+    state.items.reduce((total, item) => total + item.price * item.quantity, 0),
   );

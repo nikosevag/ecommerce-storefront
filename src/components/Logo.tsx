@@ -6,11 +6,12 @@ function Logo() {
     <NavLink
       to="/"
       end
-      className="flex items-center gap-2 text-2xl font-bold text-gray-900 hover:text-blue-600 transition-colors group">
-      <div className="bg-blue-600 text-white p-2 rounded-lg group-hover:bg-blue-700 transition-colors">
-        <Store className="w-6 h-6" />
+      className="group flex items-center gap-2 text-2xl font-bold text-gray-900 transition-colors hover:text-blue-600"
+    >
+      <div className="rounded-lg bg-blue-600 p-2 text-white transition-colors group-hover:bg-blue-700">
+        <Store className="h-6 w-6" />
       </div>
-      <span className="text-blue-600 hover:text-blue-700 transition-colors">
+      <span className="text-blue-600 transition-colors hover:text-blue-700">
         ShopHub
       </span>
     </NavLink>

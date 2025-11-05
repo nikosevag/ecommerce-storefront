@@ -18,37 +18,40 @@ function CartPage() {
 
   // Mobile cart item component
   const MobileCartItem = ({ item }: { item: CartItem }) => (
-    <div className="flex gap-3 bg-gray-50 p-3 rounded-lg">
-      <div className="shrink-0 w-16 h-16 bg-white rounded-md overflow-hidden">
+    <div className="flex gap-3 rounded-lg bg-gray-50 p-3">
+      <div className="h-16 w-16 shrink-0 overflow-hidden rounded-md bg-white">
         <img
           src={item.image}
           alt={item.title}
-          className="w-full h-full object-contain p-1"
+          className="h-full w-full object-contain p-1"
         />
       </div>
-      <div className="flex-1 min-w-0">
-        <h4 className="font-medium text-sm line-clamp-2 mb-1">{item.title}</h4>
-        <p className="text-sm text-gray-600 mb-2">${item.price.toFixed(2)}</p>
+      <div className="min-w-0 flex-1">
+        <h4 className="mb-1 line-clamp-2 text-sm font-medium">{item.title}</h4>
+        <p className="mb-2 text-sm text-gray-600">${item.price.toFixed(2)}</p>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <button
               onClick={() => handleQuantityChange(item.id, item.quantity - 1)}
-              className="w-7 h-7 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors">
-              <Minus className="w-3 h-3" />
+              className="flex h-7 w-7 items-center justify-center rounded-full border border-gray-300 transition-colors hover:bg-gray-100"
+            >
+              <Minus className="h-3 w-3" />
             </button>
             <span className="w-8 text-center text-sm font-medium">
               {item.quantity}
             </span>
             <button
               onClick={() => handleQuantityChange(item.id, item.quantity + 1)}
-              className="w-7 h-7 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors">
-              <Plus className="w-3 h-3" />
+              className="flex h-7 w-7 items-center justify-center rounded-full border border-gray-300 transition-colors hover:bg-gray-100"
+            >
+              <Plus className="h-3 w-3" />
             </button>
           </div>
           <button
             onClick={() => removeItem(item.id)}
-            className="p-1 text-red-500 hover:text-red-700 transition-colors">
-            <Trash2 className="w-4 h-4" />
+            className="p-1 text-red-500 transition-colors hover:text-red-700"
+          >
+            <Trash2 className="h-4 w-4" />
           </button>
         </div>
       </div>
@@ -57,13 +60,14 @@ function CartPage() {
 
   if (items.length === 0) {
     return (
-      <div className="text-center py-12 px-4">
+      <div className="px-4 py-12 text-center">
         <div className="mb-6">
           <svg
-            className="mx-auto h-16 w-16 sm:h-24 sm:w-24 text-gray-400"
+            className="mx-auto h-16 w-16 text-gray-400 sm:h-24 sm:w-24"
             fill="none"
             stroke="currentColor"
-            viewBox="0 0 24 24">
+            viewBox="0 0 24 24"
+          >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -72,13 +76,14 @@ function CartPage() {
             />
           </svg>
         </div>
-        <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2">
+        <h2 className="mb-2 text-xl font-semibold text-gray-900 sm:text-2xl">
           Your cart is empty
         </h2>
-        <p className="text-gray-600 mb-6">Add some products to get started</p>
+        <p className="mb-6 text-gray-600">Add some products to get started</p>
         <Link
           to="/"
-          className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium">
+          className="inline-block rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition-colors duration-200 hover:bg-blue-700"
+        >
           Continue Shopping
         </Link>
       </div>
@@ -86,23 +91,24 @@ function CartPage() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
+    <div className="mx-auto max-w-4xl px-4 sm:px-6">
+      <div className="mb-6 flex items-center justify-between">
+        <h1 className="text-xl font-bold text-gray-900 sm:text-2xl">
           Shopping Cart
         </h1>
         <button
           onClick={clearCart}
-          className="text-xs sm:text-sm text-gray-600 hover:text-red-600 transition-colors px-2 py-1 rounded">
+          className="rounded px-2 py-1 text-xs text-gray-600 transition-colors hover:text-red-600 sm:text-sm"
+        >
           Clear Cart
         </button>
       </div>
 
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200">
+      <div className="rounded-lg border border-gray-200 bg-white shadow-sm">
         <div className="p-4 sm:p-6">
           {/* Desktop Layout - Hidden on mobile */}
           <div className="hidden md:block">
-            {items.map((item) => (
+            {items.map(item => (
               <CartItemRow
                 key={item.id}
                 item={item}
@@ -113,19 +119,16 @@ function CartPage() {
           </div>
 
           {/* Mobile Layout - Hidden on desktop */}
-          <div className="md:hidden space-y-4">
-            {items.map((item) => (
-              <MobileCartItem
-                key={item.id}
-                item={item}
-              />
+          <div className="space-y-4 md:hidden">
+            {items.map(item => (
+              <MobileCartItem key={item.id} item={item} />
             ))}
           </div>
         </div>
 
         {/* Cart Summary */}
-        <div className="border-t border-gray-200 p-4 sm:p-6 bg-gray-50">
-          <div className="space-y-2 mb-4">
+        <div className="border-t border-gray-200 bg-gray-50 p-4 sm:p-6">
+          <div className="mb-4 space-y-2">
             <div className="flex justify-between text-sm text-gray-600">
               <span>
                 Subtotal (
@@ -156,15 +159,17 @@ function CartPage() {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col gap-4 sm:flex-row">
             <Link
               to="/"
-              className="flex-1 bg-gray-200 text-gray-800 py-3 px-6 rounded-lg hover:bg-gray-300 transition-colors duration-200 font-medium text-center">
+              className="flex-1 rounded-lg bg-gray-200 px-6 py-3 text-center font-medium text-gray-800 transition-colors duration-200 hover:bg-gray-300"
+            >
               Continue Shopping
             </Link>
             <Link
               to="/checkout"
-              className="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium text-center">
+              className="flex-1 rounded-lg bg-blue-600 px-6 py-3 text-center font-medium text-white transition-colors duration-200 hover:bg-blue-700"
+            >
               Checkout
             </Link>
           </div>

@@ -16,27 +16,25 @@ export function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-      <Link
-        to={`/product/${product.id}`}
-        className="block">
+    <div className="overflow-hidden rounded-lg bg-white shadow-md transition-shadow duration-300 hover:shadow-lg">
+      <Link to={`/product/${product.id}`} className="block">
         <div className="aspect-square overflow-hidden bg-gray-100">
           <img
             src={product.image}
             alt={product.title}
-            className="w-full h-full object-contain p-4 hover:scale-105 transition-transform duration-300"
+            className="h-full w-full object-contain p-4 transition-transform duration-300 hover:scale-105"
           />
         </div>
         <div className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2 min-h-12">
+          <h3 className="mb-2 line-clamp-2 min-h-12 font-semibold text-gray-900">
             {product.title}
           </h3>
-          <div className="flex items-center justify-between mb-3">
+          <div className="mb-3 flex items-center justify-between">
             <span className="text-2xl font-bold text-gray-900">
               ${product.price.toFixed(2)}
             </span>
             <div className="flex items-center text-sm text-gray-600">
-              <span className="text-yellow-500 mr-1">★</span>
+              <span className="mr-1 text-yellow-500">★</span>
               <span>{product.rating.rate}</span>
               <span className="ml-1">({product.rating.count})</span>
             </div>
@@ -47,26 +45,27 @@ export function ProductCard({ product }: ProductCardProps) {
         <button
           onClick={handleAddToCart}
           disabled={isAdding || showSuccess}
-          className={`w-full py-2 px-4 rounded-md transition-all duration-300 font-medium flex items-center justify-center gap-2 transform ${
+          className={`flex w-full transform items-center justify-center gap-2 rounded-md px-4 py-2 font-medium transition-all duration-300 ${
             isAdding
-              ? 'bg-blue-700 text-white scale-95 animate-pulse'
+              ? 'scale-95 animate-pulse bg-blue-700 text-white'
               : showSuccess
-              ? 'bg-green-600 text-white scale-95'
-              : 'bg-blue-600 text-white hover:bg-blue-700 hover:scale-105 active:scale-95'
-          }`}>
+                ? 'scale-95 bg-green-600 text-white'
+                : 'bg-blue-600 text-white hover:scale-105 hover:bg-blue-700 active:scale-95'
+          }`}
+        >
           {isAdding ? (
             <>
-              <ShoppingCart className="w-4 h-4 animate-spin" />
+              <ShoppingCart className="h-4 w-4 animate-spin" />
               Adding...
             </>
           ) : showSuccess ? (
             <>
-              <Check className="w-4 h-4 animate-bounce" />
+              <Check className="h-4 w-4 animate-bounce" />
               Added!
             </>
           ) : (
             <>
-              <ShoppingCart className="w-4 h-4" />
+              <ShoppingCart className="h-4 w-4" />
               Add to Cart
             </>
           )}
