@@ -9,6 +9,7 @@ import {
   Heart,
   Star,
   CreditCard,
+  Github,
 } from 'lucide-react';
 
 function About() {
@@ -26,22 +27,22 @@ function About() {
           A modern e-commerce storefront showcasing advanced React development
           skills, complete checkout flow, and contemporary web technologies
         </p>
-        <div className="flex justify-center gap-4 pt-4">
-          <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-md">
-            <Code className="w-4 h-4 text-blue-500" />
-            <span className="text-sm font-medium text-gray-700">
+        <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 pt-4 px-4">
+          <div className="flex items-center justify-center gap-2 bg-white px-3 sm:px-4 py-2 rounded-full shadow-md">
+            <Code className="w-4 h-4 text-blue-500 shrink-0" />
+            <span className="text-sm font-medium text-gray-700 whitespace-nowrap">
               Portfolio Project
             </span>
           </div>
-          <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-md">
-            <Zap className="w-4 h-4 text-yellow-500" />
-            <span className="text-sm font-medium text-gray-700">
+          <div className="flex items-center justify-center gap-2 bg-white px-3 sm:px-4 py-2 rounded-full shadow-md">
+            <Zap className="w-4 h-4 text-yellow-500 shrink-0" />
+            <span className="text-sm font-medium text-gray-700 whitespace-nowrap">
               Modern Tech Stack
             </span>
           </div>
-          <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-md">
-            <Star className="w-4 h-4 text-purple-500" />
-            <span className="text-sm font-medium text-gray-700">
+          <div className="flex items-center justify-center gap-2 bg-white px-3 sm:px-4 py-2 rounded-full shadow-md">
+            <Star className="w-4 h-4 text-purple-500 shrink-0" />
+            <span className="text-sm font-medium text-gray-700 whitespace-nowrap">
               Best Practices
             </span>
           </div>
@@ -437,15 +438,31 @@ function About() {
             This project represents just one example of modern web development
             capabilities. Let's build something amazing together.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 font-medium shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center justify-center gap-2">
+          <div className="flex flex-col md:flex-row justify-center gap-4">
+            <a
+              className="bg-gray-900 text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition-all duration-200 font-medium shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center justify-center gap-2"
+              href="https://github.com/nikosevag/ecommerce-storefront"
+              target="_blank"
+              rel="noopener noreferrer">
+              <Github className="w-4 h-4" />
+              View on GitHub
+            </a>
+            <a
+              className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 font-medium shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center justify-center gap-2"
+              href="https://nikosevag.gr/#projects"
+              target="_blank"
+              rel="noopener noreferrer">
               <Globe className="w-4 h-4" />
               View More Projects
-            </button>
-            <button className="bg-white text-gray-800 px-8 py-3 rounded-lg hover:bg-gray-50 transition-all duration-200 font-medium shadow-lg hover:shadow-xl hover:-translate-y-1 border border-gray-200 flex items-center justify-center gap-2">
+            </a>
+            <a
+              className="bg-white text-gray-800 px-8 py-3 rounded-lg hover:bg-gray-50 transition-all duration-200 font-medium shadow-lg hover:shadow-xl hover:-translate-y-1 border border-gray-200 flex items-center justify-center gap-2"
+              href="https://nikosevag.gr/#contact"
+              target="_blank"
+              rel="noopener noreferrer">
               <Heart className="w-4 h-4" />
               Get in Touch
-            </button>
+            </a>
           </div>
         </div>
       </div>
